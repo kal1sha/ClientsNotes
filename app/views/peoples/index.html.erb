@@ -1,0 +1,25 @@
+<h1>Listing peoples</h1>
+ 
+ <%= link_to 'New people', :action => :new %>
+ 
+<table>
+  <tr>
+    <th>Second</th>
+    <th>First</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+ 
+  <% @peoples.each do |people| %>
+    <tr>
+      <td><%= people.firstname %></td>
+      <td><%= people.secondname %></td>
+      <td><%= people.description %></td>
+      <td><%= link_to 'Show', :action => :show, :id => people.id %></td>
+      <td><%= link_to 'Edit', :action => :edit, :id => people.id %></td>
+      <td><%= link_to 'Destroy', { :action => :destroy, :id => people.id }, :method => :delete, :confirm => 'Are you sure?' %></td>
+    </tr>
+  <% end %>
+</table>

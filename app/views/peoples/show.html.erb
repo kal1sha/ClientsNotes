@@ -1,0 +1,45 @@
+<p>
+  <strong>Firstname:</strong>
+  <%= @people.firstname %>
+</p>
+
+<p>
+  <strong>Secondname:</strong>
+  <%= @people.secondname %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @people.description %>
+</p>
+
+<h2>Comments</h2>
+<% @people.comments.each do |comment| %>
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.commenter %>
+  </p>
+ 
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+<% end %>
+
+<h2>Add a comment:</h2>
+<%= form_for([@people, @people.comments.build]) do |f| %>
+  <p>
+    <%= f.label :commenter %><br />
+    <%= f.text_field :commenter %>
+  </p>
+  <p>
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Edit people', edit_people_path(@people) %> |
+<%= link_to 'Back to peoples', peoples_path %>
